@@ -1,0 +1,24 @@
+all:
+
+	g++ -g -o client client.cpp -lsocket -lnsl -lresolv
+	g++ -g -o aws.o aws.cpp -lsocket -lnsl -lresolv
+	g++ -g -o serverA.o serverA.cpp -lsocket -lnsl -lresolv
+	g++ -g -o serverB.o serverB.cpp -lsocket -lnsl -lresolv
+	g++ -g -o serverC.o serverC.cpp -lsocket -lnsl -lresolv
+
+aws :
+	./aws.o
+
+serverA :
+	./serverA.o
+
+serverB :
+	./serverB.o
+
+serverC:
+	./serverC.o
+
+.PHONY: aws serverA serverB serverC
+
+clean:
+	$(RM) client aws serverA serverB serverC
